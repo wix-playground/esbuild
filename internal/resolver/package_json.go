@@ -384,6 +384,44 @@ func (r resolverQuery) parsePackageJSON(inputPath string) *packageJSON {
 		}
 	}
 
+	// react-native patch
+	for _, field := range mainFields {
+		if field == "react-native" {
+			if rnJSON, _, ok := getProperty(json, "react-native"); ok && r.options.Platform == config.PlatformBrowser {
+				if rn, ok := rnJSON.Data.(*js_ast.EObject); ok {
+					// The value is an object
+
+					var rnMap map[string]*string
+					if packageJSON.browserMap != nil {
+						rnMap = packageJSON.browserMap
+					} else {
+						rnMap = make(map[string]*string)
+					}
+
+					// Remap all files in the react-native field
+					for _, prop := range rn.Properties {
+						if key, ok := getString(prop.Key); ok && prop.ValueOrNil.Data != nil {
+							if value, ok := getString(prop.ValueOrNil); ok {
+								// If this is a string, it's a replacement package
+								rnMap[key] = &value
+							} else if value, ok := getBool(prop.ValueOrNil); ok {
+								// If this is false, it means the package is disabled
+								if !value {
+									rnMap[key] = nil
+								}
+							} else {
+								r.log.AddID(logger.MsgID_PackageJSON_InvalidBrowser, logger.Warning, &tracker, logger.Range{Loc: prop.ValueOrNil.Loc},
+									"Each \"react-native\" mapping must be a string or a boolean")
+							}
+						}
+					}
+
+					packageJSON.browserMap = rnMap
+				}
+			}
+		}
+	}
+
 	// Read the "sideEffects" property
 	if sideEffectsJSON, sideEffectsLoc, ok := getProperty(json, "sideEffects"); ok {
 		switch data := sideEffectsJSON.Data.(type) {
