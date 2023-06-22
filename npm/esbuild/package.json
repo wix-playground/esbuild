@@ -15,17 +15,17 @@
     "esbuild": "bin/esbuild"
   },
   "dependencies": {
-    "@esbuild/darwin-arm64": "0.17.19-wix-5",
-    "@esbuild/darwin-x64": "0.17.19-wix-5",
-    "@esbuild/linux-arm": "0.17.19-wix-5",
-    "@esbuild/linux-arm64": "0.17.19-wix-5",
-    "@esbuild/linux-ia32": "0.17.19-wix-5",
-    "@esbuild/linux-loong64": "0.17.19-wix-5",
-    "@esbuild/linux-mips64el": "0.17.19-wix-5",
-    "@esbuild/linux-ppc64": "0.17.19-wix-5",
-    "@esbuild/linux-riscv64": "0.17.19-wix-5",
-    "@esbuild/linux-s390x": "0.17.19-wix-5",
-    "@esbuild/linux-x64": "0.17.19-wix-5"
+    "@esbuild/darwin-arm64": "0.17.19-wix-6",
+    "@esbuild/darwin-x64": "0.17.19-wix-6",
+    "@esbuild/linux-arm": "0.17.19-wix-6",
+    "@esbuild/linux-arm64": "0.17.19-wix-6",
+    "@esbuild/linux-ia32": "0.17.19-wix-6",
+    "@esbuild/linux-loong64": "0.17.19-wix-6",
+    "@esbuild/linux-mips64el": "0.17.19-wix-6",
+    "@esbuild/linux-ppc64": "0.17.19-wix-6",
+    "@esbuild/linux-riscv64": "0.17.19-wix-6",
+    "@esbuild/linux-s390x": "0.17.19-wix-6",
+    "@esbuild/linux-x64": "0.17.19-wix-6"
   },
   "license": "MIT",
   "optionalDependencies": {
