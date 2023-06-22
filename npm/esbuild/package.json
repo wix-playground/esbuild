@@ -14,14 +14,6 @@
   "bin": {
     "esbuild": "bin/esbuild"
   },
-  "dependencies": {
-    "@esbuild/darwin-arm64": "0.17.19-wix-7",
-    "@esbuild/darwin-x64": "0.17.19-wix-7",
-    "@esbuild/linux-arm": "0.17.19-wix-7",
-    "@esbuild/linux-arm64": "0.17.19-wix-7",
-    "@esbuild/linux-ia32": "0.17.19-wix-7",
-    "@esbuild/linux-x64": "0.17.19-wix-7"
-  },
   "license": "MIT",
   "optionalDependencies": {
     "@esbuild/android-arm": "0.17.19-wix-8",
