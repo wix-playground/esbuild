@@ -13,6 +13,8 @@ version=$1
 
 echo $version > version.txt
 make platform-all
+jq ". += {\"dependencies\":$(jq .optionalDependencies npm/esbuild/package.json)}" npm/esbuild/package.json > npm/esbuild/package.json_
+mv npm/esbuild/package.json{_,}
 
 list=(`jq .optionalDependencies npm/esbuild/package.json | grep esbuild | cut -d \" -f2 | cut -d/ -f2`)
 
